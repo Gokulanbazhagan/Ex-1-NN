@@ -1,6 +1,6 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
-<H3>EX. NO.1</H3>
+<H3> NAME : Gokularamanan k</H3>
+<H3>REGISTER NO: 212222230040</H4>
+<H3>EX NO:1</H3>
 <H3>DATE</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
@@ -37,11 +37,150 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+
+
+Import Libraries
+```
+
+from google.colab import files
+import pandas as pd
+import seaborn as sns
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+from scipy import stats
+import numpy as np
+```
+
+
+Read the dataset
+
+```
+df=pd.read_csv("Churn_Modelling.csv")
+```
+Checking Data
+```
+df.head()
+df.tail()
+df.columns
+```
+
+
+Check the missing data
+````
+df.isnull().sum()
+```
+
+Check for Duplicates
+```
+df.duplicated()
+```
+Assigning Y
+```
+y = df.iloc[:, -1].values
+print(y)
+````
+Check for duplicates
+```
+df.duplicated()
+```
+Check for outliers
+```
+df.describe()
+```
+Dropping string values data from dataset
+```
+data = df.drop(['Surname', 'Geography','Gender'], axis=1)
+data.head()
+```
+Normalize the dataset
+```
+scaler=MinMaxScaler()
+df1=pd.DataFrame(scaler.fit_transform(data))
+print(df1)
+```
+Split the dataset
+```
+X=df.iloc[:,:-1].values
+y=df.iloc[:,-1].values
+print(X)
+print(y)
+```
+Training and testing model
+```
+X_train ,X_test ,y_train,y_test=train_test_split(X,y,test_size=0.2)
+print("X_train\n")
+print(X_train)
+print("\nLenght of X_train ",len(X_train))
+print("\nX_test\n")
+print(X_test)
+print("\nLenght of X_test ",len(X_test))
+```
 
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+Data checking:
+
+
+![image](https://github.com/user-attachments/assets/0055e2ed-38a0-4200-9ea2-4a4974306d34)
+
+
+
+Missing Data:
+
+
+![image](https://github.com/user-attachments/assets/6fc77ef9-e6a6-4121-b4f5-9a21aa577cd8)
+
+
+
+Duplicates identification:
+
+
+![image](https://github.com/user-attachments/assets/8e6df892-7960-41fc-bf9b-badc4815a5b7)
+
+
+
+Vakues of 'Y':
+
+
+![image](https://github.com/user-attachments/assets/f191ce8f-fee7-4d52-8bf9-ac23216c779d)
+
+
+
+Outliers:
+
+
+![image](https://github.com/user-attachments/assets/43327fd8-caac-437a-9d2a-ff3561b0f3d0)
+
+
+
+Checking datasets after dropping string values data from dataset:
+
+
+![image](https://github.com/user-attachments/assets/817d2885-860e-42bc-a56e-8525016d0d86)
+
+
+
+Normalize the dataset:
+
+
+![image](https://github.com/user-attachments/assets/cb4dda27-ff4b-4621-9972-eca3c7f3ec71)
+
+
+
+Split the dataset:
+
+
+![image](https://github.com/user-attachments/assets/6b17dc25-86ec-4961-a6c9-bce4aecb7711)
+
+
+
+Training and testing model:
+
+
+![image](https://github.com/user-attachments/assets/e4c0b96d-6795-4548-a09a-b489dfb12a68)
+
 
 
 ## RESULT:
